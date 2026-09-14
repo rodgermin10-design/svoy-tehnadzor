@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бесплатный чек-лист приёмки стяжки | Свой технадзор</title>
+<style>
+  :root{--navy:#0f2a43;--accent:#e8862d;--green:#2e7d32;--bg:#f5f7fa;--text:#22303e;--muted:#6b7a89;--line:#e3e8ee;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#1d4a75 100%);color:#fff;padding:70px 22px 60px;text-align:center;}
+  .hero .wrap{max-width:720px;margin:0 auto;}
+  .badge{display:inline-block;background:rgba(232,134,45,.18);border:1px solid var(--accent);color:#f5a95c;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:16px;margin-bottom:18px;}
+  h1{font-size:34px;font-weight:800;margin-bottom:12px;line-height:1.25;}
+  h1 span{color:#f5a95c;}
+  .sub{font-size:17px;color:#c6d4e2;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px 60px;}
+  .gains{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:-30px 0 26px;}
+  .g{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;font-size:14.5px;box-shadow:0 4px 14px rgba(15,42,67,.08);}
+  .g b{color:var(--navy);display:block;margin-bottom:6px;}
+  .formcard{background:#fff;border:2px solid var(--navy);border-radius:16px;padding:30px;max-width:560px;margin:0 auto;text-align:center;}
+  .formcard h2{font-size:21px;color:var(--navy);margin-bottom:6px;}
+  .formcard p{font-size:14px;color:var(--muted);margin-bottom:18px;}
+  input[type=email]{width:100%;border:2px solid var(--line);border-radius:10px;padding:13px 16px;font-size:15px;margin-bottom:12px;}
+  button{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;}
+  .priv{font-size:12px;color:var(--muted);margin-top:12px;}
+  .trust{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:22px 0;font-size:13.5px;color:var(--navy);font-weight:600;}
+  footer{text-align:center;font-size:12.5px;color:var(--muted);padding:20px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="badge">Бесплатно · PDF</div>
+    <h1>Чек-лист приёмки <span>стяжки пола</span><br>— до того, как заплатите за этап</h1>
+    <div class="sub">12 пунктов с нормативами, красные флаги бригады и порядок закрытия этапа. Понятно человеку без строительного опыта.</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="gains">
+    <div class="g"><b>12 пунктов с нормативами</b>Каждый пункт — со ссылкой на СП и объяснением «почему», можно ссылаться бригаде</div>
+    <div class="g"><b>Красные флаги</b>Фразы бригады, после которых нужно проверять в два раза внимательнее</div>
+    <div class="g"><b>Порядок оплаты</b>Как закрыть этап документом и не заплатить за брак</div>
+  </div>
+
+  <div class="trust">
+    <span>✓ 8 этапов контроля в полном комплекте</span>
+    <span>✓ 9 шаблонов документов</span>
+    <span>✓ Нормативы СП / ГОСТ</span>
+  </div>
+
+  <div class="formcard">
+    <h2>Куда отправить чек-лист?</h2>
+    <p>Пришлём PDF на почту. Без спама: только материалы по контролю ремонта, отписка в один клик.</p>
+    <!-- Подключение: Formspree / свой backend / Telegram-бот. Вставить endpoint в action -->
+    <form action="#" method="POST">
+      <input type="email" name="email" placeholder="Ваш e-mail" required>
+      <button type="submit">Получить чек-лист бесплатно</button>
+      </form>
+      <p style="margin-top:12px;font-size:14px;"><a href="https://t.me/svoy_tehnadzor_bot">Или забрать чек-лист в боте → @svoy_tehnadzor_bot</a></p>
+      <div class="priv">Нажимая кнопку, вы соглашаетесь на обработку e-mail для отправки материалов. Продажа данных — исключена.</div>
+    </div>
+</div>
+
+<footer>«Свой технадзор» — методология строительного контроля для заказчиков. © 2026</footer>
+</body>
+</html>
