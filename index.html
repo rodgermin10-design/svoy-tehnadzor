@@ -3,247 +3,497 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Свой технадзор — контролируйте ремонт сами, без найма инженера</title>
+<title>Свой технадзор — ремонт под контролем без найма инженера</title>
+<meta name="description" content="Чек-листы 8 этапов ремонта и 9 этапов стройки с нормативами СП и ГОСТ, 9 шаблонов документов и Telegram-бот. Платите бригаде только за принятые этапы. Комплект от практика с 37-летним стажем.">
 <style>
-  :root{--navy:#0f2a43;--navy2:#163a5c;--accent:#e8862d;--accent2:#f5a95c;--green:#2e7d32;--bg:#f5f7fa;--card:#fff;--text:#22303e;--muted:#6b7a89;--line:#e3e8ee;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 22px;}
-  nav{background:var(--navy);padding:14px 0;position:sticky;top:0;z-index:10;}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;}
-  .logo{color:#fff;font-weight:800;font-size:18px;} .logo span{color:var(--accent2);}
-  nav a{color:#c6d4e2;text-decoration:none;font-size:14px;margin-left:20px;}
-  nav .buy{background:var(--accent);color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;}
-  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1d4a75 100%);color:#fff;padding:64px 0 56px;text-align:center;}
-  h1{font-size:40px;font-weight:800;line-height:1.2;margin-bottom:14px;}
-  h1 span{color:var(--accent2);}
-  .sub{font-size:18px;color:#c6d4e2;max-width:700px;margin:0 auto 26px;}
-  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .btn{display:inline-block;text-decoration:none;font-weight:800;font-size:16px;padding:14px 30px;border-radius:10px;}
-  .btn-main{background:var(--accent);color:#fff;}
-  .btn-ghost{border:2px solid rgba(255,255,255,.4);color:#fff;}
-  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:-26px 0 10px;}
-  .s{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(15,42,67,.08);}
-  .s b{display:block;font-size:22px;color:var(--navy);}
-  .s i{font-style:normal;font-size:13px;color:var(--muted);}
-  section{padding:46px 0 10px;}
-  h2{font-size:28px;color:var(--navy);text-align:center;margin-bottom:8px;}
-  .lead{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 30px;}
-  .grid{display:grid;gap:16px;margin-bottom:14px;}
-  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
-  .g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr));}
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 8px rgba(15,42,67,.05);}
-  .card b{color:var(--navy);display:block;margin-bottom:6px;font-size:16px;}
-  .card p{font-size:14.5px;}
-  .steps{counter-reset:st;max-width:760px;margin:0 auto;}
-  .step{display:flex;gap:16px;padding:14px 0;}
-  .step .n{counter-increment:st;flex:0 0 40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px;}
-  .step .n:before{content:counter(st);}
-  .step div b{color:var(--navy);}
-  .step div p{font-size:14.5px;color:var(--text);}
-  .list ul{margin:10px 0 0 18px;font-size:14.5px;} .list li{margin-bottom:7px;}
-  .price{background:linear-gradient(135deg,var(--navy),#1d4a75);color:#fff;border-radius:16px;padding:34px;max-width:620px;margin:0 auto;text-align:center;}
-  .price .old{text-decoration:line-through;color:#8fa4b8;font-size:17px;}
-  .price .now{font-size:44px;font-weight:800;color:var(--accent2);}
-  .price ul{list-style:none;margin:16px 0;font-size:15px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;}
-  .price li{padding:6px 0 6px 28px;position:relative;}
-  .price li:before{content:"✓";position:absolute;left:0;color:var(--accent2);font-weight:800;}
-  .honest{background:#eef3f8;border:1px dashed var(--navy);border-radius:14px;padding:22px 26px;max-width:760px;margin:0 auto;font-size:15px;}
-  .faq .q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px;}
-  .faq b{color:var(--navy);display:block;margin-bottom:6px;}
-  .faq p{font-size:14.5px;}
-  .cta-final{background:var(--navy);border-radius:16px;color:#fff;text-align:center;padding:40px;margin:20px 0;}
-  .cta-final h2{color:#fff;}
-  .cta-final .sub{color:#c6d4e2;font-size:16px;margin-bottom:22px;}
-  .formcard{background:#fff;border-radius:14px;padding:22px;max-width:480px;margin:0 auto;}
-  input[type=email]{width:100%;border:2px solid var(--line);border-radius:10px;padding:12px 15px;font-size:15px;margin-bottom:10px;}
-  button{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:13px;font-size:15.5px;font-weight:800;cursor:pointer;}
-  .priv{font-size:11.5px;color:var(--muted);margin-top:10px;}
-  footer{text-align:center;font-size:12.5px;color:var(--muted);padding:30px 0;}
+  :root{
+    --navy:#0f2a43; --navy-light:#183d5f; --navy-dark:#081827;
+    --bg:#f5f7fa; --white:#ffffff; --border:#d3dce6; --muted:#6b7a89;
+    --amber:#e8862d; --amber-light:#f5a95c; --green:#2e7d32;
+    --shadow:0 2px 10px rgba(15,42,67,.07); --radius:4px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:96px;}
+  body{font-family:'Segoe UI',Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy);line-height:1.6;padding-top:84px;}
+  h1,h2,h3,h4{font-weight:800;line-height:1.2;color:var(--navy);}
+  p{margin-bottom:1rem;}
+  a{color:var(--navy-light);}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .ic{width:20px;height:20px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ic-fill{fill:currentColor;stroke:none;}
+
+  /* ---------- header ---------- */
+  header{position:fixed;top:0;left:0;width:100%;height:84px;background:var(--navy);border-bottom:3px solid var(--amber);z-index:300;display:flex;align-items:center;box-shadow:0 2px 14px rgba(0,0,0,.18);}
+  .header-inner{display:flex;justify-content:space-between;align-items:center;width:100%;gap:24px;}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .logo-icon{background:var(--amber);color:var(--navy);width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius);}
+  .logo-text{color:#fff;font-size:1.12rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;display:block;}
+  .logo-sub{display:block;font-size:.72rem;color:var(--amber-light);font-weight:400;}
+  nav{display:flex;align-items:center;gap:28px;}
+  .nav-links{display:flex;list-style:none;gap:24px;}
+  .nav-links a{color:#fff;text-decoration:none;font-size:.94rem;font-weight:600;transition:color .2s;}
+  .nav-links a:hover{color:var(--amber-light);}
+  .btn-header{display:inline-block;background:var(--amber);color:var(--navy);padding:11px 22px;font-size:.9rem;font-weight:800;text-decoration:none;border-radius:var(--radius);transition:all .2s;white-space:nowrap;}
+  .btn-header:hover{background:var(--amber-light);}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-block;text-decoration:none;font-weight:800;font-size:1rem;padding:15px 30px;border-radius:var(--radius);transition:all .2s;text-align:center;}
+  .btn-amber{background:var(--amber);color:#fff;}
+  .btn-amber:hover{background:var(--amber-light);color:var(--navy);}
+  .btn-ghost{border:2px solid rgba(255,255,255,.45);color:#fff;}
+  .btn-ghost:hover{border-color:var(--amber-light);color:var(--amber-light);}
+  .btn-dark{background:var(--navy);color:#fff;}
+  .btn-dark:hover{background:var(--navy-light);}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--navy);color:#fff;padding:84px 0 92px;position:relative;
+    background-image:radial-gradient(rgba(245,169,92,.13) 1px, transparent 1px);background-size:28px 28px;}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:52px;align-items:center;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,134,45,.16);border:1px solid var(--amber);color:var(--amber-light);padding:7px 15px;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;border-radius:var(--radius);margin-bottom:24px;}
+  .hero h1{color:#fff;font-size:2.75rem;margin-bottom:18px;letter-spacing:-.5px;}
+  .hero h1 span{color:var(--amber);}
+  .hero-lead{font-size:1.15rem;color:#d3dfe9;margin-bottom:30px;max-width:640px;}
+  .hero-highlights{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;}
+  .hero-hl{display:flex;align-items:flex-start;gap:11px;}
+  .hero-hl .ic{color:var(--amber);margin-top:2px;}
+  .hero-hl p{font-size:.95rem;color:#cfdbe5;margin:0;}
+  .hero-img{border:2px solid var(--amber);background:var(--navy-dark);padding:10px;border-radius:var(--radius);}
+  .hero-img img{width:100%;height:auto;display:block;border-radius:2px;}
+
+  /* ---------- stats ---------- */
+  .stats{background:var(--white);border-bottom:1px solid var(--border);padding:38px 0;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .stat{border-left:4px solid var(--amber);padding-left:18px;}
+  .stat-num{font-size:1.9rem;font-weight:800;color:var(--navy);line-height:1;margin-bottom:6px;}
+  .stat-lbl{font-size:.8rem;color:var(--navy-light);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+
+  /* ---------- sections ---------- */
+  section{padding:84px 0;}
+  .sec-head{margin-bottom:46px;}
+  .sec-tag{color:var(--amber);font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:8px;}
+  .sec-title{font-size:2.1rem;}
+  .sec-sub{color:var(--muted);margin-top:10px;max-width:760px;}
+  .grid{gap:24px;display:grid;}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);}
+  .card .ic{color:var(--amber);margin-bottom:14px;}
+  .card h3{font-size:1.15rem;margin-bottom:8px;}
+  .card p{font-size:.95rem;color:#3c5065;margin:0;}
+
+  /* steps */
+  .steps{counter-reset:st;max-width:820px;}
+  .step{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);}
+  .step:last-child{border-bottom:none;}
+  .step-n{counter-increment:st;flex:0 0 46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;}
+  .step-n:before{content:counter(st);}
+  .step b{display:block;font-size:1.05rem;color:var(--navy);margin-bottom:3px;}
+  .step p{margin:0;font-size:.95rem;color:#3c5065;}
+  .step .dot{color:var(--amber);font-weight:800;}
+
+  /* navy values */
+  .values .grid.g2{grid-template-columns:1fr 1fr;}
+  .values{background:var(--navy);color:#fff;background-image:radial-gradient(rgba(245,169,92,.1) 1px, transparent 1px);background-size:28px 28px;}
+  .values .sec-title{color:#fff;}
+  .values .sec-tag{color:var(--amber-light);}
+  .vcard{background:var(--navy-light);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:32px;position:relative;transition:border-color .3s;}
+  .vcard:hover{border-color:var(--amber);}
+  .vnum{position:absolute;top:18px;right:22px;font-size:2.4rem;font-weight:800;color:rgba(255,255,255,.09);}
+  .vicon{width:48px;height:48px;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;border-radius:var(--radius);margin-bottom:18px;}
+  .vcard h3{color:#fff;font-size:1.25rem;margin-bottom:10px;}
+  .vcard p{color:#c2d1df;font-size:.95rem;margin:0;}
+
+  /* products */
+  .prod{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow);}
+  .prod-head{background:var(--navy);color:#fff;padding:22px 24px;border-bottom:3px solid var(--amber);}
+  .prod-head h3{color:#fff;font-size:1.25rem;margin:0;}
+  .prod-head .sub{font-size:.85rem;color:var(--amber-light);margin-top:4px;}
+  .prod-body{padding:24px;display:flex;flex-direction:column;gap:14px;flex-grow:1;}
+  .prod-price{font-size:2.1rem;font-weight:800;color:var(--navy);line-height:1;}
+  .prod-price small{font-size:.85rem;color:var(--muted);font-weight:600;}
+  .prod ul{list-style:none;font-size:.93rem;color:#3c5065;display:grid;gap:8px;}
+  .prod li{display:flex;gap:9px;align-items:flex-start;}
+  .prod li .ic{width:17px;height:17px;color:var(--green);margin-top:3px;}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
+  .tag{background:#e2e8f0;color:var(--navy);font-size:.72rem;font-weight:700;padding:4px 10px;text-transform:uppercase;letter-spacing:.4px;border-radius:2px;}
+  .prod .btn{margin-top:auto;}
+
+  /* standards list */
+  .std-list{list-style:none;display:grid;gap:14px;margin-top:22px;}
+  .std-list li{display:flex;gap:15px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;}
+  .std-list .ic{color:var(--amber);margin-top:2px;}
+  .std-list b{display:block;font-size:1rem;margin-bottom:3px;}
+  .std-list p{margin:0;font-size:.9rem;color:var(--navy-light);}
+  .std-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start;}
+  .std-imgs img{width:100%;height:100%;min-height:230px;object-fit:cover;border:1px solid var(--border);border-radius:var(--radius);background:#fff;}
+
+  /* author */
+  .author{display:flex;gap:22px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-left:5px solid var(--navy);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);}
+  .ava{flex:0 0 86px;height:86px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;}
+  .author b{font-size:1.15rem;color:var(--navy);display:block;}
+  .author .role{font-size:.88rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
+
+  /* faq */
+  .faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;}
+  .faq-item b{display:block;color:var(--navy);font-size:1.02rem;margin-bottom:6px;}
+  .faq-item p{margin:0;font-size:.94rem;color:#3c5065;}
+
+  /* banner */
+  .banner{position:relative;background-image:url('img/banner.jpg');background-size:cover;background-position:center;border-top:4px solid var(--amber);border-bottom:1px solid var(--navy-dark);}
+  .banner:before{content:'';position:absolute;inset:0;background:rgba(8,24,39,.82);}
+  .banner .container{position:relative;padding-top:56px;padding-bottom:56px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;}
+  .banner h2{color:#fff;font-size:1.7rem;margin-bottom:6px;}
+  .banner p{color:var(--amber-light);margin:0;font-size:1.05rem;}
+
+  /* lead form */
+  .lead{background:var(--navy);color:#fff;border-radius:var(--radius);padding:40px;max-width:640px;margin:0 auto;text-align:center;background-image:radial-gradient(rgba(245,169,92,.12) 1px, transparent 1px);background-size:24px 24px;}
+  .lead h2{color:#fff;margin-bottom:8px;}
+  .lead p{color:#c6d4e2;font-size:.95rem;}
+  .lead input[type=email]{width:100%;border:2px solid var(--border);border-radius:var(--radius);padding:14px 16px;font-size:1rem;margin:14px 0 10px;}
+  .lead .consent{display:flex;gap:9px;align-items:flex-start;text-align:left;font-size:.8rem;color:#a9bccd;margin-bottom:12px;}
+  .lead .consent a{color:var(--amber-light);}
+  .lead button{width:100%;background:var(--amber);color:#fff;border:none;border-radius:var(--radius);padding:15px;font-size:1rem;font-weight:800;cursor:pointer;}
+  .lead button:hover{background:var(--amber-light);color:var(--navy);}
+
+  /* footer */
+  footer{background:var(--navy-dark);color:#8fa7be;padding:60px 0 28px;font-size:.9rem;}
+  .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:40px;}
+  .f-brand{color:#fff;font-size:1.15rem;font-weight:800;text-transform:uppercase;margin-bottom:12px;}
+  .f-head{color:#fff;font-size:.9rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;}
+  .f-links{list-style:none;display:grid;gap:9px;}
+  .f-links a{color:#8fa7be;text-decoration:none;}
+  .f-links a:hover{color:var(--amber);}
+  .f-req{line-height:1.8;}
+  .f-req a{color:var(--amber-light);}
+  .f-bottom{border-top:1px solid rgba(255,255,255,.09);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;}
+  .f-bottom a{color:var(--amber);text-decoration:none;}
+  .cookie{margin-top:12px;font-size:.78rem;color:#6f88a0;}
+
+  @media (max-width:1000px){
+    .hero-grid,.g-std{grid-template-columns:1fr !important;gap:36px;}
+    .values .grid.g2{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .f-grid{grid-template-columns:1fr 1fr;gap:28px;}
+  }
+  @media (max-width:768px){
+    body{padding-top:72px;}
+    header{height:72px;}
+    .nav-links{display:none;}
+    .hero h1{font-size:2rem;}
+    .hero-highlights,.std-imgs{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .f-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+    .banner .container{justify-content:center;text-align:center;}
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <div class="logo">Свой <span>технадзор</span></div>
-    <div><a href="#how">Как работает</a><a href="#inside">Что внутри</a><a href="#price">Цена</a><a class="buy" href="#price">Получить комплект</a></div>
-  </div>
-</nav>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 7l7-4 7 4M3 11l2 6h4l2-6M13 11l2 6h4l2-6"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a5 5 0 0 0 6.6 6.6l-9 9a2.1 2.1 0 0 1-3-3l9-9z"/></symbol>
+  <symbol id="i-diagram" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a2 2 0 0 1 2 2v7"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m9 14-2 8 5-3 5 3-2-8"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></symbol>
+</svg>
 
 <header>
-  <div class="wrap">
-    <h1>Ремонт под контролем —<br><span>без найма инженера</span></h1>
-    <div class="sub">Принимайте работы у бригады как профессионал: чек-листы 8 этапов с нормативами СП и ГОСТ, 9 шаблонов документов, платёжная дисциплина «нет приёмки — нет платежа».</div>
-    <div class="btns">
-      <a class="btn btn-main" href="#price">Получить комплект</a>
-      <a class="btn btn-ghost" href="stranitsa-sbora-pochty.html">Бесплатный чек-лист стяжки</a>
-    </div>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><svg class="ic" style="width:26px;height:26px"><use href="#i-diagram"/></svg></div>
+      <div>
+        <span class="logo-text">Свой технадзор</span>
+        <span class="logo-sub">строительный контроль для заказчика</span>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#how">Как работает</a></li>
+        <li><a href="#inside">Что внутри</a></li>
+        <li><a href="#price">Цена</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+      </ul>
+      <a href="#price" class="btn-header">Получить комплект</a>
+    </nav>
   </div>
 </header>
 
-<div class="wrap">
-  <div class="strip">
-    <div class="s"><b>8</b><i>этапов контроля от договора до приёмки</i></div>
-    <div class="s"><b>9</b><i>шаблонов документов с подсказками</i></div>
-    <div class="s"><b>30 мин</b><i>в неделю — ваш вклад</i></div>
-    <div class="s"><b>0 ₽</b><i>оплаты работ без подписанного акта</i></div>
-  </div>
-
-  <section>
-    <h2>Где ремонт съедает деньги</h2>
-    <p class="lead">Четыре сценария, после которых заказчик платит дважды. Все они закрываются документами и дисциплиной — не знаниями про ремонт.</p>
-    <div class="grid g3">
-      <div class="card"><b>Скрытые работы не видно</b><p>Армирование, трассы, гидроизоляция закрываются навсегда. Ошибка всплывёт через год — платить будете вы.</p></div>
-      <div class="card"><b>Смета живёт своей жизнью</b><p>«Допы» по ходу, забытые объёмы, материалы «с запасом» — за ваш счёт, если в договоре нет ограничений.</p></div>
-      <div class="card"><b>Деньги ушли — рычагов нет</b><p>Аванс выплачен, бригада пропадает, сроки едут. А обязательства никто не зафиксировал.</p></div>
-      <div class="card"><b>«Нормально будет»</b><p>Все заверения на словах. Без акта и фотофиксации вы не докажете ни один недостаток — ни бригаде, ни суду.</p></div>
-    </div>
-  </section>
-
-  <section id="how">
-    <h2>Как работает контроль</h2>
-    <p class="lead">Та же методология, по которой работает профессиональный технадзор, — в форме, посильной без опыта: 30 минут в неделю.</p>
-    <div class="steps">
-      <div class="step"><div class="n"></div><div><b>Старт по документам</b><p>Договор со этапами, смета и график платежей — по шаблонам комплекта. Аванс только на материалы, за работы — 0 ₽.</p></div></div>
-      <div class="step"><div class="n"></div><div><b>Бригада работает по графику</b><p>Сроки этапов и неустойка за срыв — в договоре. Вы платите за материалы, работы ждут приёмки.</p></div></div>
-      <div class="step"><div class="n"></div><div><b>Вы принимаете по чек-листу</b><p>Проходите пункты этапа с нормативами. Скрытые работы — только с актом и фото до закрытия. Замечания — в дефектную ведомость.</p></div></div>
-      <div class="step"><div class="n"></div><div><b>Платите по факту</b><p>Акт подписан — оплата в 3 рабочих дня. Нет акта — нет оплаты. В финале — гарантийное удержание 5% и гарантия 24 месяца.</p></div></div>
-    </div>
-  </section>
-
-  <section id="inside">
-    <h2>Что внутри комплекта</h2>
-    <p class="lead">Всё готово к работе: открыл, прошёл, подписал. Без необходимости разбираться в нормативах самостоятельно.</p>
-    <div class="grid g2">
-      <div class="card list">
-        <b>Чек-листы приёмки — 8 этапов</b>
-        <p style="color:var(--muted);font-size:13.5px;">Каждый пункт — что проверяете и на что ссылаетесь.</p>
-        <ul>
-          <li>Договор и смета — красные флаги до подписания</li>
-          <li>Демонтаж — несущие, шум, мусор</li>
-          <li>Перегородки и ГКЛ — каркас, звукоизоляция</li>
-          <li>Электрика — сечения, УЗО, фотофиксация трасс</li>
-          <li>Сантехника и гидроизоляция — опрессовка, уклоны</li>
-          <li>Стяжка и тёплый пол — плоскость, давление при заливке</li>
-          <li>Чистовая отделка — простук, косой свет, допуски</li>
-          <li>Приёмка объекта — документы, гарантия, удержание</li>
-        </ul>
-      </div>
-      <div class="card list">
-        <b>Шаблоны документов — 9 форм</b>
-        <p style="color:var(--muted);font-size:13.5px;">С подсказками: что менять под себя, что не подписывать.</p>
-        <ul>
-          <li>Договор подряда — этапы, платежи, гарантия 24 мес.</li>
-          <li>Смета по этапам — единицы, объёмы, лимит запаса 10%</li>
-          <li>График платежей «этап → приёмка → оплата»</li>
-          <li>Акт скрытых работ + журнал производства работ</li>
-          <li>Дефектная ведомость и претензия (ст. 721–723 ГК РФ)</li>
-          <li>Акт приёмки этапа</li>
-          <li>Акт приёмки объекта + гарантийный лист</li>
-        </ul>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:14px;color:var(--muted);">Бонус: обновления чек-листов и шаблонов под актуальные редакции нормативов — 12 месяцев.</p>
-  </section>
-
-  <section>
-    <h2>Для кого этот комплект</h2>
-    <div class="grid g2">
-      <div class="card"><b>Подойдёт, если:</b><p style="font-size:14.5px;">• Ремонт делает наёмная бригада в новостройке или вторичке<br>• Вы платите из своих денег и принимаете работы лично<br>• Нанимать технадзор не хотите, а контролировать «на глаз» страшно</p></div>
-      <div class="card"><b>Не подойдёт, если:</b><p style="font-size:14.5px;">• На объекте уже работает инженер технадзора<br>• Бригада отказывается от договора и актов — это сигнал сменить бригаду, а не комплект</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Автор методологии</h2>
-    <div class="grid g2">
-      <div class="card" style="display:flex;gap:18px;align-items:flex-start;">
-        <div style="flex:0 0 84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--navy),#1d4a75);color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;">МК</div>
+<main>
+  <!-- HERO -->
+  <section class="hero" style="padding-top:84px">
+    <div class="container">
+      <div class="hero-grid">
         <div>
-          <b style="font-size:17px;">Молчанов Константин Евгеньевич</b>
-          <p style="color:var(--muted);font-size:14px;">Практик строительного контроля · 37 лет в отрасли</p>
-          <p style="font-size:14.5px;">Технадзор, строительный контроль, сметное дело, документооборот с министерствами и надзорными органами.</p>
+          <div class="hero-badge"><svg class="ic"><use href="#i-award"/></svg> 37 лет практики в строительном контроле</div>
+          <h1>Ремонт под контролем — <span>без найма инженера</span></h1>
+          <p class="hero-lead">Чек-листы 8 этапов ремонта и 9 этапов стройки с нормативами СП и ГОСТ, 9 шаблонов документов и Telegram-бот сопровождения. Вы платите бригаде только за принятые этапы.</p>
+          <div class="btn-row">
+            <a class="btn btn-amber" href="#price">Получить комплект — 2 990 ₽</a>
+            <a class="btn btn-ghost" href="stranitsa-sbora-pochty.html">Бесплатный чек-лист стяжки</a>
+          </div>
+          <div class="hero-highlights">
+            <div class="hero-hl"><svg class="ic"><use href="#i-check"/></svg><p>Оплата работ — только после подписанного акта приёмки этапа</p></div>
+            <div class="hero-hl"><svg class="ic"><use href="#i-check"/></svg><p>Скрытые работы закрываются только с актом и фотофиксацией</p></div>
+            <div class="hero-hl"><svg class="ic"><use href="#i-check"/></svg><p>Каждый пункт — со ссылкой на СП/ГОСТ: аргументы для бригады</p></div>
+            <div class="hero-hl"><svg class="ic"><use href="#i-check"/></svg><p>30 минут в неделю — без строительного образования</p></div>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="img/hero.jpg" alt="Инструменты строительного контроля на техническом чертеже">
         </div>
       </div>
-      <div class="card">
-        <b>Почему методологии можно доверять</b>
-        <p style="font-size:14.5px;">Комплект собран не из статей, а из ежедневной практики приёмки: этапность, нормативы СП и ГОСТ, акты скрытых работ, платёжная дисциплина. Та же система, по которой работают профессиональные технадзорщики, — упакованная для заказчика без строительного образования.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num">8 + 9</div><div class="stat-lbl">этапов контроля: квартира + дом</div></div>
+        <div class="stat"><div class="stat-num">9</div><div class="stat-lbl">шаблонов документов с подсказками</div></div>
+        <div class="stat"><div class="stat-num">30 мин</div><div class="stat-lbl">в неделю — ваш вклад в контроль</div></div>
+        <div class="stat"><div class="stat-num">14 дней</div><div class="stat-lbl">возврат, если не пригодится</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAINS -->
+  <section>
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">Почему это важно</span>
+        <h2 class="sec-title">Где ремонт съедает деньги</h2>
+        <p class="sec-sub">Четыре сценария, после которых заказчик платит дважды. Все они закрываются документами и дисциплиной — не знаниями про ремонт.</p>
+      </div>
+      <div class="grid g4">
+        <div class="card"><svg class="ic"><use href="#i-shield"/></svg><h3>Скрытые работы не видно</h3><p>Армирование, трассы, гидроизоляция закрываются навсегда. Ошибка всплывёт через год — платить будете вы.</p></div>
+        <div class="card"><svg class="ic"><use href="#i-calc"/></svg><h3>Смета живёт своей жизнью</h3><p>«Допы» по ходу, забытые объёмы, материалы «с запасом» — за ваш счёт, если в договоре нет ограничений.</p></div>
+        <div class="card"><svg class="ic"><use href="#i-bolt"/></svg><h3>Деньги ушли — рычагов нет</h3><p>Аванс выплачен, бригада пропадает, сроки едут. А обязательства никто не зафиксировал.</p></div>
+        <div class="card"><svg class="ic"><use href="#i-doc"/></svg><h3>«Нормально будет»</h3><p>Все заверения на словах. Без акта и фотофиксации вы не докажете ни один недостаток.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="price">
-    <h2>Цена</h2>
-    <p class="lead">Дешевле, чем одна переделка скрытой работы. И несравнимо дешевле разбирательства с бригадой.</p>
-    <div class="price">
-      <div style="font-size:16px;margin-bottom:4px;">Комплект «Ремонт квартиры»</div>
-      <div><span class="old">4 990 ₽</span></div>
-      <div class="now">2 990 ₽</div>
-      <div style="font-size:13px;color:#8fa4b8;">цена запуска для первых 20 покупателей</div>
-      <ul>
-        <li>Чек-листы 8 этапов с нормативами СП/ГОСТ</li>
-        <li>9 шаблонов документов с подсказками</li>
-        <li>Обновления нормативов — 12 месяцев</li>
-        <li>Гарантия возврата 14 дней — если не пригодился</li>
-        <li>Первым 20: разбор одного спорного этапа в подарок</li>
-      </ul>
-      <!-- Платёжная ссылка Robokassa подключена 17.09.2026 -->
-      <a class="btn btn-main" href="https://auth.robokassa.ru/merchant/Invoice/IbAOU74mmkK7YjQy_AXc-w" style="display:inline-block;">Получить комплект</a>
-      <p style="font-size:12px;color:rgba(255,255,255,.6);margin-top:8px;">Оплата через Robokassa · чек автоматически</p>
-      
+  <!-- HOW -->
+  <section id="how" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">Методология</span>
+        <h2 class="sec-title">Как работает контроль</h2>
+        <p class="sec-sub">Та же система, по которой работает профессиональный технадзор, — в форме, посильной заказчику без опыта: этап → чек-лист → акт → платёж.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div><b>Старт по документам</b><p>Договор с этапами, смета и график платежей — по шаблонам комплекта. Аванс только на материалы, за работы — <span class="dot">0 ₽</span>.</p></div></div>
+        <div class="step"><div class="step-n"></div><div><b>Бригада работает по графику</b><p>Сроки этапов и неустойка за срыв — в договоре. Вы платите за материалы, работы ждут приёмки.</p></div></div>
+        <div class="step"><div class="step-n"></div><div><b>Вы принимаете по чек-листу</b><p>Пункты этапа с нормативами. Скрытые работы — только с актом и фото до закрытия. Замечания — в дефектную ведомость.</p></div></div>
+        <div class="step"><div class="step-n"></div><div><b>Платите по факту</b><p>Акт подписан — оплата в 3 рабочих дня. Нет акта — нет оплаты. В финале: гарантийное удержание 5% и гарантия 24 месяца.</p></div></div>
+      </div>
     </div>
-    <div class="price" style="margin-top:24px;">
-      <div style="font-size:16px;margin-bottom:4px;">Комплект «Дом (ИЖС)» — для стройки</div>
-      <div class="now">5 750 ₽</div>
-      <div style="font-size:13px;color:#8fa4b8;">9 этапов стройки · от фундамента до приёмки</div>
-      <ul>
-        <li>Чек-листы 9 этапов: фундамент, коробка, кровля, окна, инженерия, стяжка, отделка, приёмка</li>
-        <li>Критические точки: армирование, гильзы до заливки, кровельный пирог, опрессовка</li>
-        <li>9 шаблонов документов + обновления 12 месяцев</li>
-        <li>Гарантия возврата 14 дней</li>
-      </ul>
-      <a class="btn btn-main" href="https://auth.robokassa.ru/merchant/Invoice/vwA7UiuyLECzN1BEsO000g" style="display:inline-block;">Получить комплект</a>
-    </div>
-    <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:16px;">Готовится: Telegram-бот сопровождения объекта — напоминания по этапам, фотофиксация, дефектная ведомость и отчёт PDF. Запишитесь в лист ожидания в форме ниже.</p>
   </section>
 
-  <section>
-    <h2>Нужен технадзор на объекте?</h2>
-    <div class="grid g3">
-      <div class="card"><b>Выездной контроль этапов</b><p>Инженер приезжает на ключевые точки: скрытые работы, стяжка, электрика — приёмка по тем же чек-листам, что в комплекте.</p></div>
-      <div class="card"><b>Экспертиза спора</b><p>Разбор ситуации по фото и документам, дефектная ведомость и претензия с нормативной базой.</p></div>
-      <div class="card"><b>Приёмка под ключ</b><p>Финальная приёмка объекта с полным документооборотом и гарантийным сопровождением.</p></div>
+  <!-- VALUES -->
+  <section class="values">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">Принципы</span>
+        <h2 class="sec-title">Базовые ценности методологии</h2>
+      </div>
+      <div class="grid g2">
+        <div class="vcard"><span class="vnum">01</span><div class="vicon"><svg class="ic"><use href="#i-diagram"/></svg></div><h3>Системность</h3><p>Пошаговая структура проверки каждого этапа, исключающая пропуск скрытых работ и «забытых» пунктов приёмки.</p></div>
+        <div class="vcard"><span class="vnum">02</span><div class="vicon"><svg class="ic"><use href="#i-calc"/></svg></div><h3>Финансовая дисциплина</h3><p>Необоснованные переплаты и повторные расходы закрываются своевременным выявлением брака до оплаты этапа.</p></div>
+        <div class="vcard"><span class="vnum">03</span><div class="vicon"><svg class="ic"><use href="#i-scale"/></svg></div><h3>Прозрачность</h3><p>Опора на СП и ГОСТ вместо «мне так удобнее». Понятные аргументы в разговоре с бригадой и подрядчиком.</p></div>
+        <div class="vcard"><span class="vnum">04</span><div class="vicon"><svg class="ic"><use href="#i-wrench"/></svg></div><h3>Практичность</h3><p>Инструменты рассчитаны на заказчика без профильного образования: понятные действия, готовые документы, бот-помощник.</p></div>
+      </div>
     </div>
-    <p style="text-align:center;font-size:15px;">Опиши объект и задачу на почту: <a href="mailto:dse676@mail.ru"><b>dse676@mail.ru</b></a> — ответ в течение рабочего дня. Либо через бота: кнопка «👨‍🔧 Нужен технадзор» — заявка уйдёт напрямую.</p>
   </section>
 
-  <section class="faq">
-    <h2>Частые вопросы</h2>
-    <p class="lead">Отвечаем прямо.</p>
-    <div class="q"><b>Чем это лучше статей и YouTube?</b><p>Статьи дают разрозненные советы. Комплект — это система: этапность, нормативы по каждому пункту, готовые документы и платёжная дисциплина. Вы не «что-то читали», вы управляете проектом.</p></div>
-    <div class="q"><b>Бригада откажется работать по актам?</b><p>Нормальная бригада работает по договору — акт им так же нужен для оплаты, как вам для приёмки. Отказ от актов и договора — красный флаг: дешевле узнать это до аванса.</p></div>
-    <div class="q"><b>Я ничего не понимаю в ремонте.</b><p>И не нужно: каждый пункт чек-листа объясняет, что проверить и почему. Весь контроль — 30 минут в неделю с правилом, уровнем и телефоном.</p></div>
-    <div class="q"><b>А если комплект не пригодится?</b><p>Вернём деньги в течение 14 дней с момента покупки без лишних вопросов — достаточно одного письма.</p></div>
-    <div class="q"><b>Это юридическая консультация?</b><p>Нет. Это методология строительного контроля: чек-листы, документы, дисциплина платежей. Для крупных сумм и сложных споров — юрист.</p></div>
+  <!-- PRICE -->
+  <section id="price" style="background:#fff">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">Продукты</span>
+        <h2 class="sec-title">Комплекты «Свой технадзор»</h2>
+        <p class="sec-sub">Цифровые комплекты: файлы приходят после оплаты, доступ к боту — по ссылке. Возврат 14 дней.</p>
+      </div>
+      <div class="grid g2" style="margin-bottom:26px">
+        <div class="prod">
+          <div class="prod-head"><h3>Комплект «Ремонт квартиры»</h3><div class="sub">8 этапов · от договора до приёмки</div></div>
+          <div class="prod-body">
+            <div class="prod-price">2 990 ₽ <small>разово</small></div>
+            <ul>
+              <li><svg class="ic"><use href="#i-check"/></svg>Чек-листы 8 этапов с нормативами СП/ГОСТ — 60+ пунктов проверки</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>9 шаблонов документов: договор, смета, график платежей, акты, ведомость, претензия</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Telegram-бот сопровождения объекта</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Обновления нормативов 12 месяцев · возврат 14 дней</li>
+            </ul>
+            <div class="tags"><span class="tag">Скрытые работы</span><span class="tag">Электрика</span><span class="tag">Стяжка</span><span class="tag">Отделка</span></div>
+            <a class="btn btn-amber" href="https://auth.robokassa.ru/merchant/Invoice/IbAOU74mmkK7YjQy_AXc-w">Оплатить 2 990 ₽</a>
+          </div>
+        </div>
+        <div class="prod">
+          <div class="prod-head"><h3>Комплект «Дом (ИЖС)»</h3><div class="sub">9 этапов · от фундамента до приёмки</div></div>
+          <div class="prod-body">
+            <div class="prod-price">5 750 ₽ <small>разово</small></div>
+            <ul>
+              <li><svg class="ic"><use href="#i-check"/></svg>Чек-листы 9 этапов стройки: фундамент, коробка, кровля, окна, инженерия, стяжка, отделка, приёмка</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Критические точки: армирование и защитный слой, гильзы до заливки, кровельный пирог, опрессовка</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>9 шаблонов документов + бот сопровождения</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Обновления 12 месяцев · возврат 14 дней</li>
+            </ul>
+            <div class="tags"><span class="tag">Фундамент</span><span class="tag">Кровля</span><span class="tag">Инженерия</span><span class="tag">Сезонность</span></div>
+            <a class="btn btn-amber" href="https://auth.robokassa.ru/merchant/Invoice/vwA7UiuyLECzN1BEsO000g">Оплатить 5 750 ₽</a>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:.92rem">Оплата картой через Robokassa · чек приходит автоматически · вопрос по заказу — в боте <a href="https://t.me/svoy_tehnadzor_bot">@svoy_tehnadzor_bot</a></p>
+    </div>
   </section>
 
+  <!-- INSIDE -->
+  <section id="inside">
+    <div class="container">
+      <div class="grid g2" style="grid-template-columns:1.05fr .95fr">
+        <div>
+          <span class="sec-tag">Состав комплектов</span>
+          <h2 class="sec-title" style="margin-bottom:8px">Что внутри</h2>
+          <p style="color:var(--muted);margin-bottom:6px">Всё готово к работе: открыл, прошёл, подписал, оплатил.</p>
+          <ul class="std-list">
+            <li><svg class="ic"><use href="#i-list"/></svg><div><b>Чек-листы приёмки — 8 этапов ремонта и 9 этапов ИЖС</b><p>Каждый пункт: что проверяете, на что ссылаетесь, какая точка платежа и что фотографировать.</p></div></li>
+            <li><svg class="ic"><use href="#i-doc"/></svg><div><b>9 шаблонов документов с подсказками</b><p>Договор с этапами и платежами, смета, график, акт скрытых работ, журнал, дефектная ведомость, претензия, акты приёмки, гарантийный лист.</p></div></li>
+            <li><svg class="ic"><use href="#i-diagram"/></svg><div><b>Telegram-бот сопровождения</b><p>Напоминает «что проверить на этой неделе», принимает галочки и фото, собирает ведомость и отчёт документом.</p></div></li>
+          </ul>
+        </div>
+        <div class="std-imgs">
+          <img src="img/std1.jpg" alt="Контроль ровности стяжки измерительным прибором">
+          <img src="img/std2.jpg" alt="Проверка электрических соединений">
+          <img src="img/about.jpg" alt="Чек-листы и документы строительного контроля" style="grid-column:1/-1;min-height:260px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section style="background:#fff;padding-top:0">
+    <div class="container">
+      <div class="sec-head" style="margin-top:84px">
+        <span class="sec-tag">Нужен человек на объекте?</span>
+        <h2 class="sec-title">Физический технадзор</h2>
+        <p class="sec-sub">Если контроль нужен не своими силами — выездной инженер по тем же чек-листам. Заявка: <a href="mailto:dse676@mail.ru">dse676@mail.ru</a> или кнопкой в боте — заявка уйдёт напрямую.</p>
+      </div>
+      <div class="grid g3">
+        <div class="prod"><div class="prod-head"><h3>Выездной контроль этапов</h3></div><div class="prod-body"><p style="font-size:.95rem;color:#3c5065">Инженер приезжает на ключевые точки: скрытые работы, стяжка, электрика — приёмка по тем же чек-листам.</p><div class="tags"><span class="tag">Скрытые работы</span><span class="tag">Стяжка</span><span class="tag">Электрика</span></div></div></div>
+        <div class="prod"><div class="prod-head"><h3>Экспертиза спора</h3></div><div class="prod-body"><p style="font-size:.95rem;color:#3c5065">Разбор ситуации по фото и документам, дефектная ведомость и претензия с нормативной базой.</p><div class="tags"><span class="tag">Ведомость</span><span class="tag">Документы</span><span class="tag">Претензия</span></div></div></div>
+        <div class="prod"><div class="prod-head"><h3>Приёмка под ключ</h3></div><div class="prod-body"><p style="font-size:.95rem;color:#3c5065">Финальная приёмка объекта с полным документооборотом и гарантийным сопровождением.</p><div class="tags"><span class="tag">Осмотр</span><span class="tag">Документооборот</span><span class="tag">Гарантия</span></div></div></div>
+      </div>
+      <p style="text-align:center;margin-top:22px">Заявка на выезд: <a href="mailto:dse676@mail.ru"><b>dse676@mail.ru</b></a> · ответ в течение рабочего дня · либо кнопка «👨‍🔧 Нужен технадзор» в <a href="https://t.me/svoy_tehnadzor_bot">боте</a></p>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="author">
+        <div class="ava">МК</div>
+        <div>
+          <div class="role">Автор методологии</div>
+          <b>Молчанов Константин Евгеньевич</b>
+          <p style="margin:6px 0 0;color:#3c5065;font-size:.95rem">Практик строительного контроля с 37-летним стажем: технадзор, строительный контроль, сметное дело, документооборот с министерствами. Комплект собран из ежедневной практики приёмки — этапы, нормативы, акты и платёжная дисциплина, упакованные для заказчика без строительного образования.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-tag">Частые вопросы</span>
+        <h2 class="sec-title">Отвечаем прямо</h2>
+      </div>
+      <div class="faq-item"><b>Чем это лучше статей и YouTube?</b><p>Статьи дают разрозненные советы. Комплект — система: этапность, нормативы по каждому пункту, готовые документы и платёжная дисциплина. Вы не «что-то читали» — вы управляете проектом.</p></div>
+      <div class="faq-item"><b>Бригада откажется работать по актам?</b><p>Нормальная бригада работает по договору — акт ей нужен так же, как вам. Отказ от актов и договора — красный флаг: дешевле узнать до аванса.</p></div>
+      <div class="faq-item"><b>Я ничего не понимаю в ремонте.</b><p>И не нужно: каждый пункт чек-листа объясняет, что проверить и почему. Весь контроль — 30 минут в неделю с правилом, уровнем и телефоном.</p></div>
+      <div class="faq-item"><b>А если комплект не пригодится?</b><p>Вернём деньги в течение 14 дней с момента покупки без лишних вопросов — достаточно одного письма.</p></div>
+      <div class="faq-item"><b>Это юридическая консультация?</b><p>Нет. Это методология строительного контроля: чек-листы, документы, дисциплина платежей. Для крупных сумм и сложных споров — юрист.</p></div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="container">
+      <div>
+        <h2>Методология строительного контроля</h2>
+        <p>Практический подход и финансовая дисциплина на каждом этапе</p>
+      </div>
+      <a class="btn btn-amber" href="#price">Получить комплект</a>
+    </div>
+  </div>
+
+  <!-- LEAD -->
   <section id="lead">
-    <div class="cta-final">
-      <h2>Начните с бесплатного чек-листа</h2>
-      <div class="sub">Получите чек-лист приёмки стяжки — и проверьте методологию на своём объекте уже сегодня.</div>
-      <div class="formcard">
-        <!-- Подключение: Formspree / свой backend / Telegram-бот. Вставить endpoint в action -->
+    <div class="container">
+      <div class="lead">
+        <h2>Начните с бесплатного чек-листа</h2>
+        <p>Чек-лист приёмки стяжки — 12 пунктов с нормативами. Проверьте методологию на своём объекте уже сегодня.</p>
         <form action="#" method="POST">
           <input type="email" name="email" placeholder="Ваш e-mail" required>
+          <label class="consent"><input type="checkbox" required> Согласен(на) с <a href="pd.html" target="_blank">политикой обработки персональных данных</a> и на получение информационных сообщений</label>
           <button type="submit">Получить чек-лист бесплатно</button>
         </form>
-        <div class="priv">Без спама. Отписка в один клик. Записавшимся в лист ожидания бота — ранний доступ.</div>
+        <p style="margin-top:14px;font-size:.88rem">Или забрать сразу в боте: <a href="https://t.me/svoy_tehnadzor_bot">@svoy_tehnadzor_bot</a></p>
       </div>
     </div>
   </section>
+</main>
 
-  <footer>«Свой технадзор» — методология строительного контроля для заказчиков. Инструмент контроля, не юридическая консультация и не замена инженера при экспертизе спора. © 2026<br><p style="margin-top:8px;"><a href="oferta.html" style="color:#9fc2e0;">Публичная оферта</a> · <a href="oferta.docx" style="color:#9fc2e0;">Скачать DOCX</a> · <a href="pd.html" style="color:#9fc2e0;">Политика обработки ПД</a> · Сайт использует технические cookie и может использовать обезличенную аналитику посещений · Продавец: Молчанов К.Е. (самозанятый, ИНН 771911783104) · <a href="mailto:dse676@mail.ru" style="color:#9fc2e0;">dse676@mail.ru</a></p></footer>
-</div>
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">Свой технадзор</div>
+        <p style="margin-bottom:14px">Методология строительного контроля для частных заказчиков. Чек-листы, документы и бот — чтобы платить только за принятые работы.</p>
+      </div>
+      <div>
+        <div class="f-head">Продукты</div>
+        <ul class="f-links">
+          <li><a href="#price">Комплект «Ремонт квартиры» — 2 990 ₽</a></li>
+          <li><a href="#price">Комплект «Дом (ИЖС)» — 5 750 ₽</a></li>
+          <li><a href="stranitsa-sbora-pochty.html">Бесплатный чек-лист стяжки</a></li>
+          <li><a href="#how">Как работает контроль</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-head">Документы</div>
+        <ul class="f-links">
+          <li><a href="oferta.html">Публичная оферта</a></li>
+          <li><a href="oferta.docx">Оферта (DOCX)</a></li>
+          <li><a href="pd.html">Политика обработки ПД</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-head">Продавец</div>
+        <div class="f-req">
+          Молчанов К.Е.<br>самозанятый (НПД), ИНН 771911783104<br>
+          <a href="mailto:dse676@mail.ru">dse676@mail.ru</a><br>+7 903 560-52-57
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div>© 2026 «Свой технадзор». Инструмент контроля, не юридическая консультация и не замена инженера при экспертизе спора.</div>
+      <div><a href="https://t.me/svoy_tehnadzor_bot">Telegram-бот @svoy_tehnadzor_bot</a></div>
+    </div>
+    <div class="cookie">Сайт использует технические cookie и может использовать обезличенную аналитику посещений — подробнее в <a href="pd.html">Политике обработки ПД</a>.</div>
+  </div>
+</footer>
+
 </body>
 </html>
