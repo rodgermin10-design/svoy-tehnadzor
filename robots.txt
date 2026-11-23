@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rodgermin10-design.github.io/svoy-tehnadzor/sitemap.xml
